@@ -31,20 +31,56 @@ spec:
     sources:
       - ingress
       - service
-    provider: digitalocean
-    digitalocean:
-      secretName: external-dns
-    env:
-      - name: DO_TOKEN
-        valueFrom:
-          secretKeyRef:
-            name: external-dns
-            key: digitalocean_api_token
-            optional: false
-    domainFilters:
-      - example.tld
+    provider:
+      name: webhook
+      webhook:
+        image:
+          repository: ghcr.io/amoniacou/external-dns-digitalocean-webhook
+          tag: latest
+        env:
+          - name: DO_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: external-dns
+                key: digitalocean_api_token
+          - name: DO_DOMAIN_FILTER
+            value: example.tld
+          - name: DO_HTTP_RETRY_MAX
+            value: "5"
+        args:
+          - --port=8080
+          - --host=localhost
+          - --health-port=8888
+          - --health-host=0.0.0.0
+          - --log-level=info
+        securityContext:
+          runAsUser: 65532
+          runAsGroup: 65532
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+              - ALL
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8888
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8888
+          initialDelaySeconds: 5
+          periodSeconds: 5
     logLevel: debug
     policy: sync
+    registry: txt
+    extraArgs:
+      webhook-provider-url: http://localhost:8080
+    domainFilters:
+      - example.tld
     resources:
       limits:
         memory: 64Mi

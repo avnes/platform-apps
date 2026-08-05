@@ -29,6 +29,11 @@ spec:
             domainFilters:
             - anyops.site
             - anyops.dev
+            provider:
+              webhook:
+                env:
+                - name: DO_DOMAIN_FILTER
+                  value: anyops.site,anyops.dev
       target:
         kind: HelmRelease
         name: external-dns
