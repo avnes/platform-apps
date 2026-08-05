@@ -32,6 +32,11 @@ spec:
             provider:
               webhook:
                 env:
+                - name: DO_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: external-dns
+                      key: digitalocean_api_token
                 - name: DO_DOMAIN_FILTER
                   value: anyops.site,anyops.dev
       target:
