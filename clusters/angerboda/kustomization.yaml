@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ./flux-system
   #- cluster-config.yaml
+  - cert-manager.yaml
   - dnsutils.yaml
   - external-dns.yaml
   - external-secrets.yaml
