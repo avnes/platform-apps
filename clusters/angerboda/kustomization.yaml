@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./flux-system
+  - ./config
   #- chaoskube.yaml
-  #- cluster-config.yaml
   - dnsutils.yaml
   - external-dns.yaml
   - external-secrets.yaml
@@ -13,4 +13,3 @@ resources:
   - metallb.yaml
   - prometheus-operator-crds.yaml
   - traefik.yaml
-  #- trivy-operator.yaml
