@@ -16,7 +16,4 @@ spec:
   interval: 5m0s
   url: oci://ghcr.io/traefik/helm/traefik
   ref:
-    tag: v42.2.0
-  layerSelector:
-    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
-    operation: extract
+    tag: latest
