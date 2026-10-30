@@ -10,5 +10,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ../../infrastructure/stable/falco
+  path: ./infrastructure/stable/falco
   prune: true

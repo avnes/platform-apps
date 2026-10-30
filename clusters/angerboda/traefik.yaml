@@ -10,7 +10,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ../../infrastructure/stable/traefik
+  path: ./infrastructure/stable/traefik
   prune: true
   decryption:
     provider: sops

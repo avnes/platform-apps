@@ -10,7 +10,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ../../infrastructure/stable/external-dns
+  path: ./infrastructure/stable/external-dns
   prune: true
   decryption:
     provider: sops

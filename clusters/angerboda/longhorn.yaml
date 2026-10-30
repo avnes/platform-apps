@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ../../infrastructure/stable/longhorn
+  path: ./infrastructure/stable/longhorn
   prune: true
   decryption:
     provider: sops

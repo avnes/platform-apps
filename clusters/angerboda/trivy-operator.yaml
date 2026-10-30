@@ -11,5 +11,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ../../infrastructure/stable/trivy-operator
+  path: ./infrastructure/stable/trivy-operator
   prune: true
