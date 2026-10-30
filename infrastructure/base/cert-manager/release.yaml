@@ -6,11 +6,9 @@ metadata:
 spec:
   chart:
     spec:
-      chart: cert-manager
-      sourceRef:
+      chartRef:
         kind: OCIRepository
         name: cert-manager
-        namespace: cert-manager
   interval: 1m0s
   install:
     crds: CreateReplace
