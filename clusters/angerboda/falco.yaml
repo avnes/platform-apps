@@ -9,6 +9,6 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: catalogue
-  path: ./infrastructure/falco
+    name: flux-system
+  path: ../../infrastructure/stable/falco
   prune: true

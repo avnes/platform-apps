@@ -10,8 +10,8 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: catalogue
-  path: ./infrastructure/longhorn
+    name: flux-system
+  path: ../../infrastructure/stable/longhorn
   prune: true
   decryption:
     provider: sops

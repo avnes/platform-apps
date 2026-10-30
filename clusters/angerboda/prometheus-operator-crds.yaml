@@ -1,15 +1,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: metallb
+  name: prometheus-operator-crds
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: infrastructure
-    - name: prometheus-operator-crds
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: catalogue
-  path: ./infrastructure/metallb
+    name: flux-system
+  path: ../../infrastructure/stable/prometheus-operator-crds
   prune: true

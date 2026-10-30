@@ -10,8 +10,8 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: catalogue
-  path: ./infrastructure/loki-stack
+    name: flux-system
+  path: ../../infrastructure/stable/loki-stack
   prune: true
   patches:
     - patch: |-

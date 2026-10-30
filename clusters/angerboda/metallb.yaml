@@ -1,18 +1,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: platform-apps
+  name: metallb
   namespace: flux-system
 spec:
   dependsOn:
-    - name: flux-system
+    - name: infrastructure
+    - name: prometheus-operator-crds
   interval: 1m0s
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ../../infrastructure/stable
+  path: ../../infrastructure/stable/metallb
   prune: true
-  # decryption:
-  #   provider: sops
-  #   secretRef:
-  #     name: sops-age

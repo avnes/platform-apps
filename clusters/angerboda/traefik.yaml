@@ -9,8 +9,8 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: catalogue
-  path: ./infrastructure/traefik
+    name: flux-system
+  path: ../../infrastructure/stable/traefik
   prune: true
   decryption:
     provider: sops
