@@ -13,7 +13,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: traefik
-        namespace: traefik
   interval: 1m0s
   install:
     crds: CreateReplace
