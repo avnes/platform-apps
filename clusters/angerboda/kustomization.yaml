@@ -10,5 +10,5 @@ resources:
   - metallb.yaml
   - prometheus-operator-crds.yaml
   - traefik.yaml
-  #- falco.yaml
-  #- loki-stack.yaml
+  - falco.yaml
+  - loki-stack.yaml
