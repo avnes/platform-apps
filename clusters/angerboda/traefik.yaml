@@ -28,6 +28,9 @@ spec:
             ingressRoute:
               dashboard:
                 matchRule: Host(`traefik.angerboda.anyops.site`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+                middlewares:
+                  - name: traefik-dashboard-auth
+                    namespace: traefik
             service:
               annotations:
                 external-dns.kubernetes.io/hostname: traefik.angerboda.anyops.site
