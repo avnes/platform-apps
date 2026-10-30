@@ -4,6 +4,8 @@ metadata:
   name: external-secrets
   namespace: external-secrets
 spec:
+  dependsOn:
+    - name: prometheus-operator-crds
   chart:
     spec:
       chart: external-secrets

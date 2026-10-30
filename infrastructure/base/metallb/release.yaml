@@ -4,6 +4,8 @@ metadata:
   name: metallb
   namespace: metallb-system
 spec:
+  dependsOn:
+    - name: prometheus-operator-crds
   chart:
     spec:
       chart: metallb
