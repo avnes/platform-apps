@@ -10,5 +10,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./clusters/angerboda/config
+  path: ./config
   prune: true
