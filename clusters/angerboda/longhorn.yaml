@@ -5,8 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: traefik
-    - name: prometheus-operator-crds
+    - name: flux-system
   interval: 1m0s
   sourceRef:
     kind: GitRepository

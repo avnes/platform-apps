@@ -4,6 +4,11 @@ metadata:
   name: loki
   namespace: loki-system
 spec:
+  dependsOn:
+    - name: longhorn
+      namespace: longhorn-system
+    - name: prometheus-operator-crds
+      namespace: flux-system
   chart:
     spec:
       chart: loki-stack
