@@ -4,6 +4,8 @@ metadata:
   name: external-dns
   namespace: external-dns
 spec:
+  dependsOn:
+    - name: external-secrets
   chart:
     spec:
       chart: external-dns
