@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   #- blackbox-exporter.yaml
   #- chaoskube.yaml
-  - cluster-config.yaml
+  #- cluster-config.yaml
   - dnsutils.yaml
   - external-dns.yaml
   - external-secrets.yaml
