@@ -4,6 +4,8 @@ metadata:
   name: platform-apps
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cluster-config
   interval: 1m0s
   sourceRef:
     kind: GitRepository
