@@ -6,6 +6,7 @@ metadata:
 spec:
   dependsOn:
     - name: flux-system
+    - name: external-secrets
   interval: 1m0s
   sourceRef:
     kind: GitRepository
