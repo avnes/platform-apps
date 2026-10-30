@@ -57,14 +57,6 @@ spec:
         expose:
           default: true
         nodePort: 32443
-    ingressClass:
-      enabled: true
-      isDefaultClass: false
-    providers:
-      kubernetesIngress:
-        enabled: true
-        publishedService:
-          enabled: true
     metrics:
       prometheus:
         entryPoint: metrics
