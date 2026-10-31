@@ -19,8 +19,6 @@ spec:
   postBuild:
     substitute:
       fluxcd_external_dnstxt_owner_id: "angerboda-anyops"
-      fluxcd_external_dns_domain_filter_list: "[\"anyops.site\", \"anyops.dev\"]"
-      fluxcd_external_dns_domain_filters: "anyops.site,anyops.dev"
       fluxcd_longhorn_ingress_enabled: "false"
       fluxcd_longhorn_ingress_host: "grafana.angerboda.anyops.site"
       fluxcd_traefik_dashboard_host: "traefik.angerboda.anyops.site"
