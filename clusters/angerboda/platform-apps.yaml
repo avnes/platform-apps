@@ -16,90 +16,10 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  patches:
-    - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: external-dns
-          namespace: external-dns
-        spec:
-          values:
-            txtOwnerId: angerboda-anyops
-            domainFilters:
-            - anyops.site
-            - anyops.dev
-            provider:
-              webhook:
-                env:
-                - name: DO_TOKEN
-                  valueFrom:
-                    secretKeyRef:
-                      name: external-dns
-                      key: digitalocean_api_token
-                - name: DO_DOMAIN_FILTER
-                  value: anyops.site,anyops.dev
-      target:
-        kind: HelmRelease
-        name: external-dns
-        namespace: external-dns
-    - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: loki
-          namespace: loki-system
-        spec:
-          values:
-            grafana:
-              ingress:
-                enabled: true
-                hosts:
-                  - grafana.angerboda.anyops.site
-                tls: []
-                annotations:
-                  external-dns.kubernetes.io/target: traefik.angerboda.anyops.site
-              grafana.ini:
-                server:
-                  domain: grafana.angerboda.anyops.site
-                  root_url: http://grafana.angerboda.anyops.site/
-      target:
-        kind: HelmRelease
-        name: loki
-        namespace: loki-system
-    - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: longhorn
-          namespace: longhorn-system
-        spec:
-          values:
-            ingress:
-              enabled: false
-      target:
-        kind: HelmRelease
-        name: longhorn
-        namespace: longhorn-system
-    - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: traefik
-          namespace: traefik
-        spec:
-          values:
-            ingressRoute:
-              dashboard:
-                matchRule: Host(`traefik.angerboda.anyops.site`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
-                middlewares:
-                  - name: traefik-dashboard-auth
-                    namespace: traefik
-            service:
-              annotations:
-                external-dns.kubernetes.io/hostname: traefik.angerboda.anyops.site
-                metallb.universe.tf/address-pool: lb-pool
-      target:
-        kind: HelmRelease
-        name: traefik
-        namespace: traefik
+  postBuild:
+    substitute:
+      fluxcd_external_dnstxt_owner_id: "angerboda-anyops"
+      fluxcd_external_dns_domain_filters: "anyops.site,anyops.dev"
+      fluxcd_longhorn_ingress_enabled: false
+      fluxcd_longhorn_ingress_host: "grafana.angerboda.anyops.site"
+      fluxcd_traefik_dashboard_host: "traefik.angerboda.anyops.site"

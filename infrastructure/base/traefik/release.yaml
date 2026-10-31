@@ -29,7 +29,7 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-        matchRule: "Host(`traefik.example.tld`) && PathPrefix(`/api`, `/dashboard`)"
+        matchRule: "Host(`${fluxcd_traefik_dashboard_host}`) && PathPrefix(`/api`, `/dashboard`)"
         entryPoints: ["traefik", "web"]
       healthcheck:
         enabled: true
@@ -38,7 +38,8 @@ spec:
       enabled: true
       type: LoadBalancer
       annotations:
-        external-dns.kubernetes.io/hostname: "traefik.example.tld"
+        external-dns.kubernetes.io/hostname: "${fluxcd_traefik_dashboard_host}"
+        metallb.universe.tf/address-pool: lb-pool
       labels:
         scrape-service-metrics: "true"
       spec:

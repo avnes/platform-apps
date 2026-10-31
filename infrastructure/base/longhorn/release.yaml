@@ -24,8 +24,8 @@ spec:
     crds: CreateReplace
   values:
     ingress:
-      enabled: true
-      host: longhorn.example.tld
+      enabled: ${fluxcd_longhorn_ingress_enabled}
+      host: ${fluxcd_longhorn_ingress_host}
       tls: false
     defaultSettings:
       deletingConfirmationFlag: true
