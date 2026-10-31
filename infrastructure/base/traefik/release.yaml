@@ -25,7 +25,26 @@ spec:
   values:
     deployment:
       enabled: true
-      kind: DaemonSet
+      kind: Deployment
+      replicas: 2
+      additionalArguments:
+        - "--configFile=/config/traefik.yaml"
+    envFrom:
+      - secretRef:
+          name: external-dns
+    volumes:
+      - name: config
+        configMap:
+          name: traefik-config
+      - name: certificates
+        persistentVolumeClaim:
+          claimName: traefik-certificates
+    additionalVolumeMounts:
+      - name: config
+        mountPath: /config
+        readOnly: true
+      - name: certificates
+        mountPath: /data
     ingressRoute:
       dashboard:
         enabled: true
@@ -34,6 +53,12 @@ spec:
         middlewares:
           - name: traefik-dashboard-auth
             namespace: traefik
+        tls:
+          certResolver: letsencrypt-dns
+          domains:
+            - main: angerboda.anyops.dev
+              sans:
+                - "*.angerboda.anyops.dev"
       healthcheck:
         enabled: true
         entryPoints: ["traefik", "web"]

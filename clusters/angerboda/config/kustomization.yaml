@@ -4,3 +4,4 @@ resources:
   - cluster-secret-store-sops-encrypted.yaml
   - metallb-pool.yaml
   - traefik-middleware.yaml
+  - traefik-tls-options.yaml
