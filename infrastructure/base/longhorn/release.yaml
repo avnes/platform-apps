@@ -26,6 +26,8 @@ spec:
       tls: false
     defaultSettings:
       deletingConfirmationFlag: true
+    persistence:
+      defaultClassReplicaCount: 1
     metrics:
       serviceMonitor:
         enabled: true
