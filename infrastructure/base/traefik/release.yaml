@@ -27,6 +27,10 @@ spec:
       enabled: true
       kind: Deployment
       replicas: 2
+      additionalVolumes:
+        - name: traefik-certificates
+          persistentVolumeClaim:
+            claimName: traefik-certificates
     certificatesResolvers:
       letsencrypt-dns:
         acme:
@@ -45,10 +49,6 @@ spec:
         secretKeyRef:
           name: external-dns
           key: digitalocean_api_token
-    volumes:
-      - name: traefik-certificates
-        persistentVolumeClaim:
-          claimName: traefik-certificates
     additionalVolumeMounts:
       - name: traefik-certificates
         mountPath: /certificates
