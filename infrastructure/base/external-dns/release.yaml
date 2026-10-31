@@ -49,9 +49,7 @@ spec:
                 name: external-dns
                 key: digitalocean_api_token
           - name: DO_DOMAIN_FILTER
-            value:
-              - anyops.site
-              - anyops.dev
+            value: anyops.site,anyops.dev
         args:
           - --port=8080
           - --host=localhost
@@ -85,7 +83,8 @@ spec:
     extraArgs:
       webhook-provider-url: http://localhost:8080
     domainFilters:
-      - "anyops.site,anyops.dev"
+      - anyops.site
+      - anyops.dev
     resources:
       limits:
         memory: 64Mi
