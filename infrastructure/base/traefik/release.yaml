@@ -49,7 +49,7 @@ spec:
       dashboard:
         enabled: true
         matchRule: "Host(`${fluxcd_traefik_dashboard_host}`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))"
-        entryPoints: ["traefik", "web"]
+        entryPoints: ["traefik", "web", "websecure"]
         middlewares:
           - name: traefik-dashboard-auth
             namespace: traefik
@@ -61,7 +61,7 @@ spec:
                 - "*.angerboda.anyops.dev"
       healthcheck:
         enabled: true
-        entryPoints: ["traefik", "web"]
+        entryPoints: ["traefik", "web", "websecure"]
     service:
       enabled: true
       type: LoadBalancer
