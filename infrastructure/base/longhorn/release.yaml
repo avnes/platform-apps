@@ -5,8 +5,6 @@ metadata:
   namespace: longhorn-system
 spec:
   dependsOn:
-    - name: traefik
-      namespace: traefik
     - name: prometheus-operator-crds
       namespace: flux-system
   chart:
@@ -24,8 +22,7 @@ spec:
     crds: CreateReplace
   values:
     ingress:
-      enabled: ${fluxcd_longhorn_ingress_enabled}
-      host: ${fluxcd_longhorn_ingress_host}
+      enabled: false
       tls: false
     defaultSettings:
       deletingConfirmationFlag: true

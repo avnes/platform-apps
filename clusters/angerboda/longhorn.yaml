@@ -16,7 +16,3 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  postBuild:
-    substitute:
-      fluxcd_longhorn_ingress_enabled: "false"
-      fluxcd_longhorn_ingress_host: "grafana.angerboda.anyops.site"
