@@ -31,6 +31,9 @@ spec:
         enabled: true
         matchRule: "Host(`${fluxcd_traefik_dashboard_host}`) && PathPrefix(`/api`, `/dashboard`)"
         entryPoints: ["traefik", "web"]
+        middlewares:
+          - name: traefik-dashboard-auth
+            namespace: traefik
       healthcheck:
         enabled: true
         entryPoints: ["traefik", "web"]
@@ -38,7 +41,7 @@ spec:
       enabled: true
       type: LoadBalancer
       annotations:
-        external-dns.kubernetes.io/hostname: "${fluxcd_traefik_dashboard_host}"
+        external-dns.kubernetes.io/hostname: ${fluxcd_traefik_dashboard_host}
         metallb.universe.tf/address-pool: lb-pool
       labels:
         scrape-service-metrics: "true"
