@@ -29,7 +29,7 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-        matchRule: "Host(`${fluxcd_traefik_dashboard_host}`) && PathPrefix(`/api`, `/dashboard`)"
+        matchRule: "Host(`${fluxcd_traefik_dashboard_host}`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))"
         entryPoints: ["traefik", "web"]
         middlewares:
           - name: traefik-dashboard-auth
