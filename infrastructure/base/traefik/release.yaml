@@ -9,6 +9,8 @@ spec:
       namespace: flux-system
     - name: external-dns
       namespace: external-dns
+    - name: longhorn
+      namespace: longhorn-system
   chart:
     spec:
       chart: traefik
