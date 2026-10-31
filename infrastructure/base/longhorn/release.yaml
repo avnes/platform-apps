@@ -26,6 +26,7 @@ spec:
       tls: false
     defaultSettings:
       deletingConfirmationFlag: true
+      storageMinimalAvailablePercentage: 10
     persistence:
       defaultClassReplicaCount: 1
     metrics:
