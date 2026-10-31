@@ -5,7 +5,9 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: platform-apps
+    - name: external-secrets
+    - name: metallb
+    - name: traefik
   interval: 1m0s
   sourceRef:
     kind: GitRepository
