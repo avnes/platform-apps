@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: traefik
 resources:
   - namespace.yaml
+  - pvc.yaml
   - repository.yaml
   - secret-sops-encrypted.yaml
   - release.yaml

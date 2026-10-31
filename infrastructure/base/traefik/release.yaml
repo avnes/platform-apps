@@ -30,8 +30,8 @@ spec:
     certificatesResolvers:
       letsencrypt-dns:
         acme:
-          email: admin@anyops.dev
-          storage: /data/acme.json
+          email: audun.nes@gmail.com
+          storage: /certificates/acme.json
           caServer: https://acme-v02.api.letsencrypt.org/directory
           dnsChallenge:
             provider: digitalocean
@@ -45,6 +45,13 @@ spec:
         secretKeyRef:
           name: external-dns
           key: digitalocean_api_token
+    volumes:
+      - name: traefik-certificates
+        persistentVolumeClaim:
+          claimName: traefik-certificates
+    additionalVolumeMounts:
+      - name: traefik-certificates
+        mountPath: /certificates
     ingressRoute:
       dashboard:
         enabled: true
