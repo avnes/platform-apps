@@ -82,9 +82,9 @@ spec:
               scheme: https
               permanent: true
         observability:
-        accessLogs: false
-        metrics: false
-        tracing: false
+          accessLogs: false
+          metrics: false
+          tracing: false
         forwardedHeaders:
           insecure: true
         expose:
