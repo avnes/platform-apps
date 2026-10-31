@@ -27,24 +27,21 @@ spec:
       enabled: true
       kind: Deployment
       replicas: 2
-      additionalArguments:
-        - "--configFile=/config/traefik.yaml"
+    certificatesResolvers:
+      letsencrypt-dns:
+        acme:
+          email: admin@anyops.dev
+          storage: /data/acme.json
+          caServer: https://acme-v02.api.letsencrypt.org/directory
+          dnsChallenge:
+            provider: digitalocean
+            delayBeforeCheck: 30s
+            resolvers:
+              - "1.1.1.1:53"
+              - "8.8.8.8:53"
     envFrom:
       - secretRef:
           name: external-dns
-    volumes:
-      - name: config
-        configMap:
-          name: traefik-config
-      - name: certificates
-        persistentVolumeClaim:
-          claimName: traefik-certificates
-    additionalVolumeMounts:
-      - name: config
-        mountPath: /config
-        readOnly: true
-      - name: certificates
-        mountPath: /data
     ingressRoute:
       dashboard:
         enabled: true
@@ -78,6 +75,16 @@ spec:
           default: true
         exposedPort: 32090
       web:
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
+        observability:
+        accessLogs: false
+        metrics: false
+        tracing: false
         forwardedHeaders:
           insecure: true
         expose:
