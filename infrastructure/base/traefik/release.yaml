@@ -27,15 +27,13 @@ spec:
       enabled: true
       kind: Deployment
       replicas: 1
-      additionalVolumes:
-        - name: traefik-certificates
-          persistentVolumeClaim:
-            claimName: traefik-certificates
+    persistence:
+      enabled: true
     certificatesResolvers:
       letsencrypt-dns:
         acme:
           email: audun.nes@gmail.com
-          storage: /certificates/acme.json
+          storage: /data/acme.json
           caServer: https://acme-v02.api.letsencrypt.org/directory
           dnsChallenge:
             provider: digitalocean
@@ -49,9 +47,6 @@ spec:
         secretKeyRef:
           name: external-dns
           key: digitalocean_api_token
-    additionalVolumeMounts:
-      - name: traefik-certificates
-        mountPath: /certificates
     ingressRoute:
       dashboard:
         enabled: true
