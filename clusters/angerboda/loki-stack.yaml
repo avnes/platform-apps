@@ -12,28 +12,7 @@ spec:
     name: flux-system
   path: ./infrastructure/stable/loki-stack
   prune: true
-  patches:
-    - patch: |-
-        apiVersion: helm.toolkit.fluxcd.io/v2
-        kind: HelmRelease
-        metadata:
-          name: loki
-          namespace: loki-system
-        spec:
-          values:
-            grafana:
-              ingress:
-                enabled: true
-                hosts:
-                  - grafana.angerboda.anyops.site
-                tls: []
-                annotations:
-                  external-dns.kubernetes.io/target: traefik.angerboda.anyops.site
-              grafana.ini:
-                server:
-                  domain: grafana.angerboda.anyops.site
-                  root_url: http://grafana.angerboda.anyops.site/
-      target:
-        kind: HelmRelease
-        name: loki
-        namespace: loki-system
+  postBuild:
+    substitute:
+      fluxcd_loki_stack_grafana_ingress_host: "grafana.angerboda.anyops.site"
+      fluxcd_traefik_dashboard_host: "traefik.angerboda.anyops.site"
