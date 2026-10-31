@@ -39,9 +39,12 @@ spec:
             resolvers:
               - "1.1.1.1:53"
               - "8.8.8.8:53"
-    envFrom:
-      - secretRef:
+    env:
+    - name: DO_AUTH_TOKEN
+      valueFrom:
+        secretKeyRef:
           name: external-dns
+          key: digitalocean_api_token
     ingressRoute:
       dashboard:
         enabled: true
