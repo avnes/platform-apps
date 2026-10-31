@@ -18,7 +18,4 @@ spec:
       name: sops-age
   postBuild:
     substitute:
-      fluxcd_external_dns_txt_owner_id: "angerboda-anyops"
-      fluxcd_longhorn_ingress_enabled: "false"
-      fluxcd_longhorn_ingress_host: "grafana.angerboda.anyops.site"
       fluxcd_traefik_dashboard_host: "traefik.angerboda.anyops.site"
