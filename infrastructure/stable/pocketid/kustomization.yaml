@@ -3,3 +3,14 @@ kind: Kustomization
 
 bases:
   - ../../base/pocketid
+
+patches:
+  - patch: |-
+      apiVersion: source.toolkit.fluxcd.io/v1
+      kind: OCIRepository
+      metadata:
+        name: pocketid
+        namespace: pocketid
+      spec:
+        ref:
+          tag: "0.0.0"

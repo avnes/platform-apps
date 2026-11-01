@@ -3,3 +3,14 @@ kind: Kustomization
 
 bases:
   - ../../base/cert-manager
+
+patches:
+  - patch: |-
+      apiVersion: source.toolkit.fluxcd.io/v1
+      kind: OCIRepository
+      metadata:
+        name: cert-manager
+        namespace: cert-manager
+      spec:
+        ref:
+          tag: v1.21.3
