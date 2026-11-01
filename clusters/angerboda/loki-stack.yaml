@@ -14,5 +14,5 @@ spec:
   prune: true
   postBuild:
     substitute:
-      fluxcd_loki_stack_grafana_ingress_host: "grafana.angerboda.anyops.site"
-      fluxcd_traefik_dashboard_host: "traefik.angerboda.anyops.site"
+      fluxcd_loki_stack_grafana_ingress_host: "grafana.angerboda.anyops.dev"
+      fluxcd_traefik_dashboard_host: "traefik.angerboda.anyops.dev"

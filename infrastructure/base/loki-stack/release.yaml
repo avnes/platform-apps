@@ -5,10 +5,12 @@ metadata:
   namespace: loki-system
 spec:
   dependsOn:
-    - name: longhorn
-      namespace: longhorn-system
     - name: prometheus-operator-crds
       namespace: flux-system
+    - name: longhorn
+      namespace: longhorn-system
+    - name: traefik
+      namespace: traefik
   chart:
     spec:
       chart: loki-stack
@@ -49,7 +51,7 @@ spec:
           enabled: true
           accessModes:
             - ReadWriteOnce
-          size: 2Gi
+          size: 1Gi
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelector: {}
@@ -59,7 +61,7 @@ spec:
         enabled: true
         accessModes:
           - ReadWriteOnce
-        size: 2Gi
+        size: 1Gi
       service:
         labels:
           scrape-service-metrics: "true"
