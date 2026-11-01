@@ -28,6 +28,8 @@ spec:
     grafana:
       enabled: true
       defaultDashboardsEnabled: true
+      image:
+        tag: "13.3.0"
       ingress:
         enabled: true
         hosts:
