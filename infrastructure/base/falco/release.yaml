@@ -4,6 +4,11 @@ metadata:
   name: falco
   namespace: falco
 spec:
+  dependsOn:
+    - name: prometheus-operator-crds
+      namespace: flux-system
+    - name: traefik
+      namespace: traefik
   chart:
     spec:
       chart: falco
@@ -11,6 +16,7 @@ spec:
         kind: HelmRepository
         name: falcosecurity
   interval: 1m0s
+  timeout: 10m0s
   install:
     crds: CreateReplace
     remediation:
@@ -23,3 +29,13 @@ spec:
       enabled: true
       webui:
         enabled: true
+        replicaCount: 1
+        disableauth: true
+        ingress:
+          enabled: true
+          annotations:
+            external-dns.kubernetes.io/target: ${fluxcd_traefik_dashboard_host}
+          hosts:
+            - host: ${fluxcd_falco_ingress_host}
+              paths:
+                - /

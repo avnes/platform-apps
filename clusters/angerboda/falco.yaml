@@ -12,3 +12,7 @@ spec:
     name: flux-system
   path: ./infrastructure/stable/falco
   prune: true
+  postbuild:
+    substitute:
+      fluxcd_traefik_dashboard_host: traefik.angerboda.anyops.dev
+      fluxcd_falco_ingress_host: falco.angerboda.anyops.dev
