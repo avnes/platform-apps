@@ -76,6 +76,8 @@ spec:
             scrape-service-metrics: "true"
         serviceMonitorNamespaceSelector: {}
     loki:
+      image:
+        tag: "3.7.9"
       persistence:
         enabled: true
         accessModes:
