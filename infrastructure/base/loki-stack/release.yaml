@@ -46,6 +46,7 @@ spec:
       grafana.ini:
         auth.generic_oauth:
           allow_sign_up: true
+          role_attribute_path: "'Editor'"
         oauth_allow_insecure_email_lookup: true
         auth.anonymous:
           enabled: false
