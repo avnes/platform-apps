@@ -33,7 +33,7 @@ spec:
       serviceMonitor:
         enabled: true
         additionalLabels:
-          scrape-service-metrics: "true"
+          app: longhorn-manager
     preUpgradeChecker:
       jobEnabled: false
       upgradeVersionCheck: false
