@@ -29,8 +29,8 @@ spec:
           paths:
             - path: /
               pathType: Prefix
-          persistence:
-            enabled: true
-            storageClass: longhorn
-            accessMode: ReadWriteOnce
-            size: 256Mi
+    persistence:
+      enabled: true
+      storageClass: longhorn
+      accessMode: ReadWriteOnce
+      size: 256Mi
