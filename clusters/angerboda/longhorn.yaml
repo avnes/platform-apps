@@ -18,4 +18,4 @@ spec:
       name: sops-age
   postBuild:
     substitute:
-      fluxcd_longhorn_ingress_host: longhorn.angerboda.anyops.dev
+      fluxcd_traefik_dashboard_host: traefik.angerboda.anyops.dev

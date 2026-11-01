@@ -41,4 +41,4 @@ spec:
     service:
       ui:
         annotations:
-          external-dns.kubernetes.io/hostname: ${fluxcd_longhorn_ingress_host}
+          external-dns.kubernetes.io/target: ${fluxcd_traefik_dashboard_host}
