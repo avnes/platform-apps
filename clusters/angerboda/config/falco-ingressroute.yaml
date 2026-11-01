@@ -31,7 +31,7 @@ spec:
       middlewares:
         - name: falco-oidc-auth
       services:
-        - name: longhorn-frontend
-          port: 80
+        - name: falco-falcosidekick-ui
+          port: 2802
   tls:
     certResolver: letsencrypt-dns
