@@ -36,7 +36,7 @@ spec:
     sources:
       - ingress
       - service
-      - ingressroute
+      - traefik-proxy
     provider:
       name: webhook
       webhook:
