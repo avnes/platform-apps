@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
   - cluster-secret-store-sops-encrypted.yaml
   - metallb-pool.yaml
-  - external-secret.yaml
   - traefik-middleware.yaml
   - traefik-tls-options.yaml
