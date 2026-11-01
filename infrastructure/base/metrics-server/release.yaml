@@ -20,3 +20,9 @@ spec:
   values:
     crds:
       enabled: true
+    metrics:
+      enabled: true
+    serviceMonitor:
+      enabled: true
+      additionalLabels:
+        scrape-service-metrics: "true"

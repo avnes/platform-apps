@@ -32,6 +32,8 @@ spec:
     metrics:
       serviceMonitor:
         enabled: true
+        additionalLabels:
+          scrape-service-metrics: "true"
     preUpgradeChecker:
       jobEnabled: false
       upgradeVersionCheck: false

@@ -23,3 +23,8 @@ spec:
   values:
     crds:
       enabled: true
+    prometheus:
+      serviceMonitor:
+        enabled: true
+        additionalLabels:
+          scrape-service-metrics: "true"
