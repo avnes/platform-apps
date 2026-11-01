@@ -14,3 +14,24 @@ spec:
                 - openid
                 - profile
                 - email
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: falco
+  namespace: falco
+  annotations:
+    external-dns.kubernetes.io/target: traefik.angerboda.anyops.dev
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`falco.angerboda.anyops.dev`)
+      kind: Rule
+      middlewares:
+        - name: falco-oidc-auth
+      services:
+        - name: longhorn-frontend
+          port: 80
+  tls:
+    certResolver: letsencrypt-dns

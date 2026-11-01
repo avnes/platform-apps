@@ -4,6 +4,6 @@ resources:
   - cluster-secret-store-sops-encrypted.yaml
   - longhorn-ingressroute.yaml
   - metallb-pool.yaml
-  - falco-middleware.yaml
+  - falco-ingressroute.yaml
   - traefik-middleware.yaml
   - traefik-tls-options.yaml

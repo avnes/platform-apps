@@ -31,17 +31,6 @@ spec:
         enabled: true
         replicaCount: 1
         disableauth: true
-        ingress:
-          enabled: true
-          ingressClassName: traefik
-          annotations:
-            external-dns.kubernetes.io/target: ${fluxcd_traefik_dashboard_host}
-            traefik.ingress.kubernetes.io/router.middlewares: falco-falco-oidc-auth@kubernetescrd
-          hosts:
-            - host: ${fluxcd_falco_ingress_host}
-              paths:
-                - path: /
-                  pathType: Prefix
     serviceMonitor:
       enabled: true
       labels:
