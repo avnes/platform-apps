@@ -38,3 +38,6 @@ spec:
     longhornManager:
       serviceAnnotations:
         prometheus.io/scrape: "true"
+    service:
+      annotations:
+        external-dns.kubernetes.io/hostname: ${fluxcd_longhorn_ingress_host}
