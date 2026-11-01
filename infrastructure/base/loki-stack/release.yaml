@@ -30,6 +30,12 @@ spec:
       defaultDashboardsEnabled: true
       image:
         tag: "13.3.0"
+      persistence:
+        enabled: true
+        storageClassName: longhorn
+        accessModes:
+          - ReadWriteOnce
+        size: 512Mi
       ingress:
         enabled: true
         hosts:
