@@ -1,0 +1,11 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: pocketid
+  namespace: pocketid
+spec:
+  interval: 5m0s
+  url: oci://ghcr.io/hobbit44/pocket-id-helm/pocket-id
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: extract

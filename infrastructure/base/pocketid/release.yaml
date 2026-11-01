@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pocketid
+  namespace: pocketid
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: pocketid
+  interval: 1m0s
+  install:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+  values:
+    config:
+      appUrl: https://${fluxcd_pocketid_ingress_host}
+      trustProxy: false
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        kubernetes.io/tls-acme: "true"
+      hosts:
+        - host: ${fluxcd_pocketid_ingress_host}
+          paths:
+            - path: /
+              pathType: Prefix
+          persistence:
+            enabled: true
+            storageClass: longhorn
+            accessMode: ReadWriteOnce
+            size: 256Mi

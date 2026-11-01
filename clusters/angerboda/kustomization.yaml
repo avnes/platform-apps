@@ -10,6 +10,7 @@ resources:
   - longhorn.yaml
   - metallb.yaml
   - metrics-server.yaml
+  - pocketid.yaml
   - prometheus-operator-crds.yaml
   - traefik.yaml
   #- falco.yaml
