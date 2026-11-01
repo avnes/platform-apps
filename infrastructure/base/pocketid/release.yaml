@@ -19,6 +19,7 @@ spec:
       tag: v2.19.1
     config:
       appUrl: https://${fluxcd_pocketid_ingress_host}
+    existingSecret: pocketid-encryption
     ingress:
       enabled: true
       annotations:
