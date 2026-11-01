@@ -36,6 +36,7 @@ spec:
     sources:
       - ingress
       - service
+      - ingressroute
     provider:
       name: webhook
       webhook:
