@@ -13,4 +13,4 @@ resources:
   - prometheus-operator-crds.yaml
   - traefik.yaml
   #- falco.yaml
-  # - loki-stack.yaml
+  - loki-stack.yaml
