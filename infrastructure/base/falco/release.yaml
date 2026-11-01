@@ -35,6 +35,7 @@ spec:
           enabled: true
           annotations:
             external-dns.kubernetes.io/target: ${fluxcd_traefik_dashboard_host}
+            traefik.ingress.kubernetes.io/router.middlewares: falco-falco-oidc-auth@kubernetescrd
           hosts:
             - host: ${fluxcd_falco_ingress_host}
               paths:
