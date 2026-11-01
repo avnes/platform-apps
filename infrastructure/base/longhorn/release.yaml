@@ -38,7 +38,3 @@ spec:
     longhornManager:
       serviceAnnotations:
         prometheus.io/scrape: "true"
-    service:
-      ui:
-        annotations:
-          external-dns.kubernetes.io/target: ${fluxcd_traefik_dashboard_host}

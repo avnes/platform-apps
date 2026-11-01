@@ -20,6 +20,8 @@ kind: IngressRoute
 metadata:
   name: longhorn
   namespace: longhorn-system
+  annotations:
+    external-dns.kubernetes.io/target: traefik.angerboda.anyops.dev
 spec:
   entryPoints:
     - websecure

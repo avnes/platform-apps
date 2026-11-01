@@ -16,6 +16,3 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  postBuild:
-    substitute:
-      fluxcd_traefik_dashboard_host: traefik.angerboda.anyops.dev
