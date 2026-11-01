@@ -61,7 +61,7 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-        matchRule: "Host(`${fluxcd_traefik_dashboard_host}`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))"
+        matchRule: "Host(`${fluxcd_traefik_dashboard_host}`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`) || PathPrefix(`/oidc/callback`))"
         entryPoints: ["traefik", "web", "websecure"]
         middlewares:
           - name: traefik-oidc-auth
