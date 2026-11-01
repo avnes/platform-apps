@@ -6,3 +6,20 @@ metadata:
 spec:
   basicAuth:
     secret: traefik-dashboard-auth
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+    name: traefik-oidc-auth
+    namespace: traefik
+spec:
+    plugin:
+        traefik-oidc-auth:
+            Provider:
+                ClientId: ${fluxcd_pocketid_client_id}
+                ClientSecret: ${fluxcd_pocketid_client_secret}
+                Url: ${fluxcd_pocketid_ingress_host}
+            Scopes:
+                - openid
+                - profile
+                - email

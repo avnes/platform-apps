@@ -18,3 +18,9 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
+  postBuild:
+    substitute:
+      fluxcd_pocketid_ingress_host: id.angerboda.anyops.dev
+    substituteFrom:
+      - kind: Secret
+        name: traefik-oidc-auth

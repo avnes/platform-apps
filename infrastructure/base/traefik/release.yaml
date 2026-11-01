@@ -64,7 +64,7 @@ spec:
         matchRule: "Host(`${fluxcd_traefik_dashboard_host}`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))"
         entryPoints: ["traefik", "web", "websecure"]
         middlewares:
-          - name: traefik-dashboard-auth
+          - name: traefik-oidc-auth
             namespace: traefik
         tls:
           certResolver: letsencrypt-dns
@@ -117,3 +117,8 @@ spec:
           enabled: true
           labels:
             scrape-service-metrics: "true"
+    experimental:
+      plugins:
+        traefik-oidc-auth:
+          moduleName: "github.com/sevensolutions/traefik-oidc-auth"
+          version: "v0.22.0"
