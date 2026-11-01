@@ -71,7 +71,9 @@ spec:
           size: 1Gi
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
-        serviceMonitorSelector: {}
+        serviceMonitorSelector:
+          matchLabels:
+            scrape-service-metrics: "true"
         serviceMonitorNamespaceSelector: {}
     loki:
       persistence:

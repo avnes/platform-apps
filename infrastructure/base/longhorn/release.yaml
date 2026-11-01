@@ -33,10 +33,11 @@ spec:
       serviceMonitor:
         enabled: true
         additionalLabels:
-          app: longhorn-manager
+          scrape-service-metrics: "true"
     preUpgradeChecker:
       jobEnabled: false
       upgradeVersionCheck: false
     longhornManager:
       serviceAnnotations:
         prometheus.io/scrape: "true"
+        scrape-service-metrics: "true"
