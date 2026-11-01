@@ -18,7 +18,7 @@ spec:
             Provider:
                 ClientId: ${fluxcd_pocketid_client_id}
                 ClientSecret: ${fluxcd_pocketid_client_secret}
-                Url: ${fluxcd_pocketid_ingress_host}
+                Url: https://${fluxcd_pocketid_ingress_host}/
             Scopes:
                 - openid
                 - profile
