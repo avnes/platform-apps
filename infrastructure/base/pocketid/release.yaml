@@ -19,7 +19,6 @@ spec:
       tag: v2.19.1
     config:
       appUrl: https://${fluxcd_pocketid_ingress_host}
-      trustProxy: false
     ingress:
       enabled: true
       annotations:
