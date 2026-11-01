@@ -27,3 +27,5 @@ spec:
         name: traefik-oidc-auth
       - kind: Secret
         name: longhorn-oidc-auth
+      - kind: Secret
+        name: falco-oidc-auth
