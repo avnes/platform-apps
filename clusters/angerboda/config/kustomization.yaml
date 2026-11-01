@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - cluster-secret-store-sops-encrypted.yaml
+  - longhorn-ingressroute.yaml
   - metallb-pool.yaml
   - traefik-middleware.yaml
   - traefik-tls-options.yaml

@@ -16,8 +16,8 @@ spec:
     plugin:
         traefik-oidc-auth:
             Provider:
-                ClientId: ${fluxcd_pocketid_client_id}
-                ClientSecret: ${fluxcd_pocketid_client_secret}
+                ClientId: ${fluxcd_pocketid_client_id_for_traefik}
+                ClientSecret: ${fluxcd_pocketid_client_secret_for_traefik}
                 Url: https://${fluxcd_pocketid_ingress_host}/
             Scopes:
                 - openid

@@ -6,6 +6,7 @@ metadata:
 spec:
   dependsOn:
     - name: external-secrets
+    - name: longhorn
     - name: metallb
     - name: traefik
   interval: 1m0s
@@ -24,3 +25,5 @@ spec:
     substituteFrom:
       - kind: Secret
         name: traefik-oidc-auth
+      - kind: Secret
+        name: longhorn-oidc-auth

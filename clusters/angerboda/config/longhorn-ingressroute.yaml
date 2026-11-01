@@ -1,0 +1,35 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: longhorn-oidc-auth
+  namespace: longhorn-system
+spec:
+  plugin:
+    traefik-oidc-auth:
+      Provider:
+        ClientId: ${fluxcd_pocketid_client_id_for_longhorn}
+        ClientSecret: ${fluxcd_pocketid_client_secret_for_longhorn}
+        Url: https://${fluxcd_pocketid_ingress_host}/
+      Scopes:
+        - openid
+        - profile
+        - email
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`longhorn.angerboda.anyops.dev`)
+      kind: Rule
+      middlewares:
+        - name: longhorn-oidc-auth
+      services:
+        - name: longhorn-frontend
+          port: 80
+  tls:
+    certResolver: letsencrypt-dns
