@@ -44,6 +44,7 @@ spec:
         annotations:
           external-dns.kubernetes.io/target: ${fluxcd_traefik_dashboard_host}
       grafana.ini:
+        oauth_allow_insecure_email_lookup: true
         auth.anonymous:
           enabled: false
         metrics:
