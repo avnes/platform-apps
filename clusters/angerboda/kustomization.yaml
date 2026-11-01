@@ -13,5 +13,4 @@ resources:
   - pocketid.yaml
   - prometheus-operator-crds.yaml
   - traefik.yaml
-  #- falco.yaml
   - loki-stack.yaml

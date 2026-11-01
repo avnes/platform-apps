@@ -44,7 +44,7 @@ spec:
           enabled: true
         server:
           domain: ${fluxcd_loki_stack_grafana_ingress_host}
-          root_url: http://${fluxcd_loki_stack_grafana_ingress_host}/
+          root_url: https://${fluxcd_loki_stack_grafana_ingress_host}/
     prometheus:
       enabled: true
       isDefault: false
