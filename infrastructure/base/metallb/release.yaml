@@ -26,5 +26,9 @@ spec:
     prometheus:
       serviceMonitor:
         enabled: true
-        additionalLabels:
-          scrape-service-metrics: "true"
+        speaker:
+          additionalLabels:
+            scrape-service-metrics: "true"
+        controller:
+          additionalLabels:
+            scrape-service-metrics: "true"
