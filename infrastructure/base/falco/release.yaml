@@ -38,4 +38,5 @@ spec:
           hosts:
             - host: ${fluxcd_falco_ingress_host}
               paths:
-                - /
+                - path: /
+                  pathType: Prefix
