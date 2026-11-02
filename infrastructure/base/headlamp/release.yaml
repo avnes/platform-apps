@@ -40,11 +40,18 @@ spec:
           - name: headlamp-plugins
             mountPath: /build/plugins
       - name: cert-manager-plugin
-        image: ghcr.io/headlamp-k8s/headlamp-plugin-cert-manager:v0.1.1
+        image: alpine:3.22.0
         command:
           - /bin/sh
           - -c
-          - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/ && chown -R 100:101 /build
+          - |
+            set -eu
+            archive=/tmp/headlamp-cert-manager.tar.gz
+            mkdir -p /build/plugins
+            wget -qO "$archive" https://github.com/headlamp-k8s/plugins/releases/download/cert-manager-0.1.1/headlamp-k8s-cert-manager-0.1.1.tar.gz
+            printf '%s  %s\n' 2b06caae0a207e2c30ce0d21bc4d672ae0a71a2cffc23a4585199110533032ab "$archive" | sha256sum -c -
+            tar -xzf "$archive" -C /build/plugins
+            chown -R 100:101 /build
         securityContext:
           runAsNonRoot: false
           privileged: false
