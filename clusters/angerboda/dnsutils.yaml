@@ -10,5 +10,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps/stable/dnsutils
+  path: ./apps/base/dnsutils
   prune: true
