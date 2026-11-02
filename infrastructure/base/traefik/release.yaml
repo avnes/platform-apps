@@ -65,8 +65,6 @@ spec:
         middlewares:
           - name: traefik-oidc-auth
             namespace: traefik
-          - name: dashboard-root-redirect
-            namespace: traefik
         tls:
           certResolver: letsencrypt-dns
           domains:
