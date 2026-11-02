@@ -23,6 +23,7 @@ spec:
   postBuild:
     substitute:
       fluxcd_pocketid_ingress_host: id.angerboda.anyops.dev
+      fluxcd_traefik_dashboard_host: traefik.angerboda.anyops.dev
     substituteFrom:
       - kind: Secret
         name: traefik-oidc-auth
