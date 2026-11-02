@@ -19,3 +19,5 @@ spec:
     crds: CreateReplace
   values:
     clusterName: ${fluxcd_cluster_name}
+    continuousScan:
+      continuousScan: enable
