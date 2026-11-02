@@ -14,3 +14,14 @@ spec:
                 - openid
                 - profile
                 - email
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: dashboard-root-redirect
+  namespace: traefik
+spec:
+  redirectRegex:
+    regex: "^https?://${fluxcd_traefik_dashboard_host}/?$"
+    replacement: "https://${fluxcd_traefik_dashboard_host}/dashboard/"
+    permanent: true
