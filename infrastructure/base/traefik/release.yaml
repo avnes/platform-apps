@@ -27,7 +27,7 @@ spec:
   values:
     deployment:
       enabled: true
-      kind: DeamonSet
+      kind: DaemonSet
       initContainers:
         - name: volume-permissions
           image: busybox:1.36.1
