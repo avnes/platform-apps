@@ -16,7 +16,7 @@ spec:
     crds: CreateReplace
   values:
     image:
-      tag: v2.19.1
+      tag: v2.19.2
     config:
       appUrl: https://${fluxcd_pocketid_ingress_host}
     existingSecret: pocketid-encryption
