@@ -23,3 +23,53 @@ spec:
       inClusterContextName: ${fluxcd_cluster_name}
       baseURL: ""
       unsafeUseServiceAccountToken: true
+      pluginsDir: /build/plugins
+    initContainers:
+      - name: kubescape-plugin
+        image: quay.io/kubescape/headlamp-plugin:v0.11.2
+        command:
+          - /bin/sh
+          - -c
+          - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/ && chown -R 100:101 /build
+        securityContext:
+          runAsNonRoot: false
+          privileged: false
+          runAsUser: 0
+          runAsGroup: 0
+        volumeMounts:
+          - name: headlamp-plugins
+            mountPath: /build/plugins
+      - name: cert-manager-plugin
+        image: ghcr.io/headlamp-k8s/headlamp-plugin-cert-manager:v0.1.1
+        command:
+          - /bin/sh
+          - -c
+          - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/ && chown -R 100:101 /build
+        securityContext:
+          runAsNonRoot: false
+          privileged: false
+          runAsUser: 0
+          runAsGroup: 0
+        volumeMounts:
+          - name: headlamp-plugins
+            mountPath: /build/plugins
+      - name: flux-plugin
+        image: ghcr.io/headlamp-k8s/headlamp-plugin-flux:v0.7.0
+        command:
+          - /bin/sh
+          - -c
+          - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/ && chown -R 100:101 /build
+        securityContext:
+          runAsNonRoot: false
+          privileged: false
+          runAsUser: 0
+          runAsGroup: 0
+        volumeMounts:
+          - name: headlamp-plugins
+            mountPath: /build/plugins
+    volumeMounts:
+      - name: headlamp-plugins
+        mountPath: /build/plugins
+    volumes:
+      - name: headlamp-plugins
+        emptyDir: {}
