@@ -68,7 +68,7 @@ spec:
           enabled: true
           accessModes:
             - ReadWriteOnce
-          size: 1Gi
+          size: 2Gi
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelector:
@@ -80,7 +80,7 @@ spec:
         enabled: true
         accessModes:
           - ReadWriteOnce
-        size: 1Gi
+        size: 2Gi
       service:
         labels:
           scrape-service-metrics: "true"
