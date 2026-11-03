@@ -12,7 +12,7 @@ resources:
   - kubescape.yaml
   - longhorn.yaml
   - metallb.yaml
-  # - metrics-server.yaml # Already provided by k0s
+  - metrics-server.yaml
   - pocketid.yaml
   - prometheus-operator-crds.yaml
   - traefik.yaml
