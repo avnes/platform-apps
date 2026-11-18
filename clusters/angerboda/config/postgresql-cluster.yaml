@@ -1,0 +1,18 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: freya
+  namespace: cncp-system
+spec:
+  instances: 3
+
+  bootstrap:
+    initdb:
+      database: app
+      owner: uF7ahx3N
+      secret:
+        name: postgresql-credentials
+      dataChecksums: true
+
+  storage:
+    size: 1Gi
