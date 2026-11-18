@@ -2,7 +2,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: freya
-  namespace: cncp-system
+  namespace: cnpg-system
 spec:
   instances: 3
 
