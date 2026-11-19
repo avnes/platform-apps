@@ -9,7 +9,7 @@ spec:
   bootstrap:
     initdb:
       database: app
-      owner: uF7ahx3N
+      owner: ${fluxcd_cnpg_postgresql_owner}
       secret:
         name: postgresql-credentials
       dataChecksums: true

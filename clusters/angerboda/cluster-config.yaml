@@ -32,3 +32,5 @@ spec:
         name: longhorn-oidc-auth
       - kind: Secret
         name: falco-oidc-auth
+      - kind: Secret
+        name: postgresql-owner
