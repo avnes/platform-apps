@@ -8,8 +8,8 @@ resources:
   - dnsutils.yaml
   - external-dns.yaml
   - external-secrets.yaml
-  - falco.yaml
-  - headlamp.yaml
+  #- falco.yaml
+  #- headlamp.yaml
   - kubescape.yaml
   - longhorn.yaml
   - metallb.yaml
@@ -17,4 +17,4 @@ resources:
   - pocketid.yaml
   - prometheus-operator-crds.yaml
   - traefik.yaml
-  - loki-stack.yaml
+  #- loki-stack.yaml
